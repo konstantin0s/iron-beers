@@ -3,8 +3,8 @@ const express = require('express');
 const hbs     = require('hbs');
 const app     = express();
 const path    = require('path');
-// const PunkAPIWrapper = require('punkapi-javascript-wrapper');
-// const punkAPI = new PunkAPIWrapper();
+const PunkAPIWrapper = require('punkapi-javascript-wrapper');
+const punkAPI = new PunkAPIWrapper();
 
 app.set('view engine', 'hbs');
 app.set('views', __dirname + '/views');
@@ -19,5 +19,5 @@ app.get('/', (req, res, next) => {
 
 
 app.listen(3000, ()=> {
-  console.log("listening");
+  console.log("listening")
 });
