@@ -16,18 +16,15 @@ app.get('/', (req, res, next) => {
   res.render('index');
 });
 
+
 app.get('/beers', (req, res, next) => {
-  punkAPI.getBeers()
-  .then(beers => {
-    console.log(beers[0])
-    res.render('beers', {
-      beers: beers
-    })
+  punkAPI.getBeers().then(beers => {
   })
-  .catch(err => {
-    console.log(err)
-    res.render('page500')
+  .catch(error => {
+    console.log(error)
   })
+
+  res.render('beers');
 });
 
 hbs.registerPartials(__dirname + '/views/partials');
