@@ -10,15 +10,14 @@
   <h1>Random Beer</h1>
 
   <div class="cards">
+  {{#each beers}}
     <div class="card">
       <img src="{{beer.image_url}}" />
       <h2>{{beer.name}}</h2>
       <h3>{{beer.tagline}}</h3>
       <p>{{beer.description}}</p>
       <a href="/beer/{{beer.id}}">More detail</a>
-      {{beer.food_pairing}}
     </div>
-      {{!-- {{#each beers}}
-      {{/each}} --}}
+  {{/each}}
 </body>
 </html>

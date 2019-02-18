@@ -32,14 +32,17 @@ app.get('/beers', (req, res, next) => {
 
 hbs.registerPartials(__dirname + '/views/partials');
 
-app.get('/randomBeer', (req,res) => {
-  punkAPI.getRandom()
-  .then(beers => {
+app.get('/randomBeer', (req, res, next) => {
+  punkAPI.randomBeer().then(beers => {
+    console.log(beers[0])
     res.render('randomBeer', {
       beer: beers[0]
     })
+  }).catch(err => {
+    console.log(err)
+    res.render('page500')
   })
-})
+});
 
 
 app.listen(3000, ()=> {
