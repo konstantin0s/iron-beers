@@ -23,17 +23,9 @@ font-family: Arial, Helvetica, sans-serif
   text-align: center;
 }
 
-.index-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-
 img {
   width: 400px;
   height: 400px;
-  padding-bottom: 40px;
 }
 
 button {

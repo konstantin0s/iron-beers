@@ -23,19 +23,6 @@ font-family: Arial, Helvetica, sans-serif
   text-align: center;
 }
 
-.index-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-
-img {
-  width: 400px;
-  height: 400px;
-  padding-bottom: 40px;
-}
-
 button {
   background-color: #0099E6;
   display: inline-block;
@@ -43,11 +30,10 @@ button {
   border: none;
   color: #FFFFFF;
   text-align: center;
-  font-size: 23px;
-  /* width: 200px; */
+  font-size: 28px;
+  width: 200px;
   transition: all 0.5s;
   cursor: pointer;
   margin: 5px;
-  padding: 5px;
 }
 
