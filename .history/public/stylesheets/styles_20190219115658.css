@@ -10,15 +10,10 @@ font-family: Arial, Helvetica, sans-serif
   }
 
 
-  .card{
+  .cards{
     display: flex;
     padding: 10% 20%;
     justify-content: space-around;
-  }
-
-  .cards {
-    position: relative;
-    top: -250px;
   }
 
 .navbar {

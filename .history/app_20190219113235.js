@@ -1,10 +1,12 @@
+
 const express = require('express');
 const hbs     = require('hbs');
 const app     = express();
 const path    = require('path');
+const axios    = require('axios');
 const PunkAPIWrapper = require('punkapi-javascript-wrapper');
 const punkAPI = new PunkAPIWrapper();
-const beers = require('./beers.json');
+// const beers = require('./beers.json');
 
 app.set('view engine', 'hbs');
 app.set('views', __dirname + '/views');
@@ -15,6 +17,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', (req, res, next) => {
   res.render('index');
 });
+
 
 // app.get('/beers', (req, res, next) => {
 //   punkAPI.getBeers()
@@ -30,7 +33,16 @@ app.get('/', (req, res, next) => {
 
 
 app.get('/beers', (req, res, next) => {
-  res.render('beers', {beers})
+  axios.get('./beers.json')
+  .then( (response) => {
+    console.log(response);
+  })
+  .catch((err) => {
+     console.log(err);
+  });
+
+  // res.render('beers', {beers})
+  res.render('beers');
 });
 
 hbs.registerPartials(__dirname + '/views/partials');
@@ -50,6 +62,7 @@ app.get('/randomBeer', (req,res) => {
     })
   })
 })
+
 */
 app.listen(3000, ()=> {
   console.log("listening");
