@@ -77,13 +77,12 @@ a {
 }
 .card h3 {
   position: relative;
-  top: 150px;
+  top: 140px;
 }
 
 .card p {
   position: relative;
   top: 180px;
-  padding: 5px;
 }
 
 .card h2{

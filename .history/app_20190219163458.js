@@ -54,7 +54,7 @@ app.get('/randomBeer', (req, res, next) => {
     response.data.map((beer)=> {
      beersArray.push(beer);
     })
-    var randomIndex = Math.floor((Math.random() * 20) + 1);
+    var randomIndex = Math.floor((Math.random() * 100) + 1);
     res.render('randomBeer', {beer: beersArray[randomIndex]});
   })
   .catch((err)=> {
