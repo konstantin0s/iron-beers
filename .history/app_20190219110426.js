@@ -37,9 +37,7 @@ app.get('/beers', (req, res, next) => {
 hbs.registerPartials(__dirname + '/views/partials');
 
 app.get('/randomBeer', (req, res, next) => {
-  res.render('randomBeer', {
-    beer: beers[0]
-  })
+  res.render('beers', {beers})
 });
 
 /*

@@ -17,31 +17,24 @@ app.get('/', (req, res, next) => {
   res.render('index');
 });
 
-// app.get('/beers', (req, res, next) => {
-//   punkAPI.getBeers()
-//   .then(beers => {
-//     console.log(beers[0])
-//     res.render('beers', {beers})
-//   })
-//   .catch(err => {
-//     console.log(err)
-//   //  res.render('page500')
-//   })
-// });
-
-
 app.get('/beers', (req, res, next) => {
-  res.render('beers', {beers})
-});
-
-hbs.registerPartials(__dirname + '/views/partials');
-
-app.get('/randomBeer', (req, res, next) => {
-  res.render('randomBeer', {
-    beer: beers[0]
+  punkAPI.getBeers()
+  .then(beers => {
+    console.log(beers[0])
+    res.render('beers', {beers})
+  })
+  .catch(err => {
+    console.log(err)
+  //  res.render('page500')
   })
 });
 
+/*
+app.get('/beers', (req, res, next) => {
+  res.render('beers', {beers})
+});
+*/
+hbs.registerPartials(__dirname + '/views/partials');
 /*
 app.get('/randomBeer', (req,res) => {
   punkAPI.getRandom()

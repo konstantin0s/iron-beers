@@ -70,12 +70,3 @@ a {
   color: #FFFFFF;
   text-decoration: none;
 }
-.card h3, p {
-  position: relative;
-  top: 150px;
-}
-
-.card h2{
-  position: relative;
-  top: 150px;
-}

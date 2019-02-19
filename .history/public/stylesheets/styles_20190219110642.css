@@ -10,7 +10,7 @@ font-family: Arial, Helvetica, sans-serif
   }
 
 
-  .card{
+  .cards{
     display: flex;
     padding: 10% 20%;
     justify-content: space-around;
@@ -69,13 +69,4 @@ img {
 a {
   color: #FFFFFF;
   text-decoration: none;
-}
-.card h3, p {
-  position: relative;
-  top: 150px;
-}
-
-.card h2{
-  position: relative;
-  top: 150px;
 }

@@ -46,10 +46,9 @@ img {
   height: 400px;
   top: 200px;
   padding-bottom: 40px;
-  position: relative;
 }
 
-.button {
+button {
   background-color: #0099E6;
   display: inline-block;
   border-radius: 4px;
@@ -69,13 +68,4 @@ img {
 a {
   color: #FFFFFF;
   text-decoration: none;
-}
-.card h3, p {
-  position: relative;
-  top: 150px;
-}
-
-.card h2{
-  position: relative;
-  top: 150px;
 }

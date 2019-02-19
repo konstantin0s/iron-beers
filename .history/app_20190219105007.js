@@ -5,7 +5,6 @@ const app     = express();
 const path    = require('path');
 const PunkAPIWrapper = require('punkapi-javascript-wrapper');
 const punkAPI = new PunkAPIWrapper();
-const beers = require('./beers.json');
 
 app.set('view engine', 'hbs');
 app.set('views', __dirname + '/views');
@@ -16,33 +15,23 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', (req, res, next) => {
   res.render('index');
 });
-
-// app.get('/beers', (req, res, next) => {
-//   punkAPI.getBeers()
-//   .then(beers => {
-//     console.log(beers[0])
-//     res.render('beers', {beers})
-//   })
-//   .catch(err => {
-//     console.log(err)
-//   //  res.render('page500')
-//   })
-// });
-
-
+debugger
 app.get('/beers', (req, res, next) => {
-  res.render('beers', {beers})
+  punkAPI.getBeers()
+  .then(beers => {
+    console.log(beers[0])
+    res.render('beers', {
+      beers: beers
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.render('page500')
+  })
 });
 
 hbs.registerPartials(__dirname + '/views/partials');
 
-app.get('/randomBeer', (req, res, next) => {
-  res.render('randomBeer', {
-    beer: beers[0]
-  })
-});
-
-/*
 app.get('/randomBeer', (req,res) => {
   punkAPI.getRandom()
   .then(beers => {
@@ -52,7 +41,7 @@ app.get('/randomBeer', (req,res) => {
   })
 })
 
-*/
+
 app.listen(3000, ()=> {
   console.log("listening");
 });
