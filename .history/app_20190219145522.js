@@ -48,20 +48,9 @@ app.get('/beers', (req, res, next) => {
 hbs.registerPartials(__dirname + '/views/partials');
 
 app.get('/randomBeer', (req, res, next) => {
-  axios.get('https://api.punkapi.com/v2/beers')
-  .then((response) => {
-    let beersArray = [];
-    response.data.map((beer)=> {
-     beersArray.push(beer);
-    })
-    res.render('randomBeer', {beer: beersArray[0]})
+  res.render('randomBeer', {
+    beer: beers[0]
   })
-  .catch((err)=> {
-     console.log(err);
-  });
-  // res.render('randomBeer', {
-  //   beer: beers[0]
-  // })
 });
 
 /*

@@ -54,7 +54,7 @@ app.get('/randomBeer', (req, res, next) => {
     response.data.map((beer)=> {
      beersArray.push(beer);
     })
-    res.render('randomBeer', {beer: beersArray[0]})
+    res.render('beers', {beer: beersArray})
   })
   .catch((err)=> {
      console.log(err);

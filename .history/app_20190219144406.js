@@ -5,7 +5,7 @@ const path    = require('path');
 const axios   = require('axios');
 // const PunkAPIWrapper = require('punkapi-javascript-wrapper');
 // const punkAPI = new PunkAPIWrapper();
-// const beers = require('./beers.json');
+const beers = require('./beers.json');
 
 app.set('view engine', 'hbs');
 app.set('views', __dirname + '/views');
@@ -32,36 +32,21 @@ app.get('/', (req, res, next) => {
 
 app.get('/beers', (req, res, next) => {
   axios.get('https://api.punkapi.com/v2/beers')
-  .then((response) => {
-    let beersArray = [];
-    response.data.map((beers)=> {
-     beersArray.push(beers);
-    })
-    res.render('beers', {beers: beersArray})
-  })
+  .then(
+    
+  )
   .catch((err)=> {
      console.log(err);
   });
-
+  res.render('beers', {beers})
 });
 
 hbs.registerPartials(__dirname + '/views/partials');
 
 app.get('/randomBeer', (req, res, next) => {
-  axios.get('https://api.punkapi.com/v2/beers')
-  .then((response) => {
-    let beersArray = [];
-    response.data.map((beer)=> {
-     beersArray.push(beer);
-    })
-    res.render('randomBeer', {beer: beersArray[0]})
+  res.render('randomBeer', {
+    beer: beers[0]
   })
-  .catch((err)=> {
-     console.log(err);
-  });
-  // res.render('randomBeer', {
-  //   beer: beers[0]
-  // })
 });
 
 /*

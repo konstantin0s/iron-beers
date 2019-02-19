@@ -51,10 +51,10 @@ app.get('/randomBeer', (req, res, next) => {
   axios.get('https://api.punkapi.com/v2/beers')
   .then((response) => {
     let beersArray = [];
-    response.data.map((beer)=> {
-     beersArray.push(beer);
+    response.data.map((beers)=> {
+     beersArray.push(beers);
     })
-    res.render('randomBeer', {beer: beersArray[0]})
+    res.render('beers', {beers: beersArray[0]})
   })
   .catch((err)=> {
      console.log(err);
