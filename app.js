@@ -3,7 +3,7 @@ const hbs = require('hbs');
 const app = express();
 const path = require('path');
 const axios = require('axios');
-require('dotenv');
+require("dotenv").config();
 
 app.set('view engine', 'hbs');
 app.set('views', __dirname + '/views');
@@ -46,8 +46,6 @@ app.get('/randomBeer', (req, res, next) => {
     });
 });
 
-
-const = process.env.port || 5000;
-app.listen(port, () => {
-  console.log(`Server started on port ${port}`);
+app.listen(process.env.PORT || 5000, () => {
+  console.log('Server started on port 5000.Tam Tam!!!');
 });
