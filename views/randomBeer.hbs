@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Random Beer</title>
 </head>
+
 <body>
   <h1>Random Beer</h1>
 
-  <div class="cards">
+  <div class="cards random">
     <div class="card">
       <img src="{{beer.image_url}}" />
       <h2>{{beer.name}}</h2>
@@ -18,7 +20,8 @@
       <a href="/beer/{{beer.id}}">More detail</a>
       {{beer.food_pairing}}
     </div>
-      {{!-- {{#each beers}}
+    {{!-- {{#each beers}}
       {{/each}} --}}
 </body>
+
 </html>

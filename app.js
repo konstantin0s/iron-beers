@@ -1,47 +1,31 @@
 const express = require('express');
-const hbs     = require('hbs');
-const app     = express();
-const path    = require('path');
-const axios   = require('axios');
-// const PunkAPIWrapper = require('punkapi-javascript-wrapper');
-// const punkAPI = new PunkAPIWrapper();
-// const beers = require('./beers.json');
+const hbs = require('hbs');
+const app = express();
+const path = require('path');
+const axios = require('axios');
+require('dotenv');
 
 app.set('view engine', 'hbs');
 app.set('views', __dirname + '/views');
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-
 app.get('/', (req, res, next) => {
   res.render('index');
 });
 
-// app.get('/beers', (req, res, next) => {
-//   punkAPI.getBeers()
-//   .then(beers => {
-//     console.log(beers[0])
-//     res.render('beers', {beers})
-//   })
-//   .catch(err => {
-//     console.log(err)
-//   //  res.render('page500')
-//   })
-// });
-
-
 app.get('/beers', (req, res, next) => {
   axios.get('https://api.punkapi.com/v2/beers')
-  .then((response) => {
-    let beersArray = [];
-    response.data.map((beers)=> {
-     beersArray.push(beers);
+    .then((response) => {
+      let beersArray = [];
+      response.data.map((beers) => {
+        beersArray.push(beers);
+      })
+      res.render('beers', { beers: beersArray })
     })
-    res.render('beers', {beers: beersArray})
-  })
-  .catch((err)=> {
-     console.log(err);
-  });
+    .catch((err) => {
+      console.log(err);
+    });
 
 });
 
@@ -49,32 +33,21 @@ hbs.registerPartials(__dirname + '/views/partials');
 
 app.get('/randomBeer', (req, res, next) => {
   axios.get('https://api.punkapi.com/v2/beers')
-  .then((response) => {
-    let beersArray = [];
-    response.data.map((beer)=> {
-     beersArray.push(beer);
+    .then((response) => {
+      let beersArray = [];
+      response.data.map((beer) => {
+        beersArray.push(beer);
+      })
+      var randomIndex = Math.floor((Math.random() * 20) + 1);
+      res.render('randomBeer', { beer: beersArray[randomIndex] });
     })
-    var randomIndex = Math.floor((Math.random() * 20) + 1);
-    res.render('randomBeer', {beer: beersArray[randomIndex]});
-  })
-  .catch((err)=> {
-     console.log(err);
-  });
-  // res.render('randomBeer', {
-  //   beer: beers[0]
-  // })
+    .catch((err) => {
+      console.log(err);
+    });
 });
 
-/*
-app.get('/randomBeer', (req,res) => {
-  punkAPI.getRandom()
-  .then(beers => {
-    res.render('randomBeer', {
-      beer: beers[0]
-    })
-  })
-})
-*/
-app.listen(3000, ()=> {
-  console.log("listening");
+
+const port = process.env.port || 5000;
+app.listen(5000, () => {
+  console.log(`Server started on port ${port}`);
 });
